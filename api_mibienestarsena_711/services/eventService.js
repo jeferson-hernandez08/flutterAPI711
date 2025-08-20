@@ -2,10 +2,21 @@ const db = require('../models');
 
 const getAllEvents = async () => {
     try {
-        const allEvents = await db.Events.findAll();
+        const allEvents = await db.Events.findAll({
+            // Aquí permitimos mostrar las categorias con la informacion del evento
+            include: {
+                    model: db.Categories,
+                    required: true, // Requerido para que solo muestre los eventos con categoria
+                    as: "category", // Alias del modelo
+                    attributes: ['id', 'name', 'description', 'image'],
+            },
+            attributes: {
+                exclude: ['createdAt', 'updatedAt']  // Excluir campos de fecha de creación y actualización
+            },
+        });
         return allEvents;
     } catch (error) {
-        throw new error(`Error al traer los eventos ${error.meessage}`); 
+        throw new Error(`Error al traer los eventos ${error.meessage}`); 
     }    
 };
 

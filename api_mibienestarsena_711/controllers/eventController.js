@@ -13,7 +13,7 @@ const getAllEvents  = async(req, resp) => {
     if (events) 
         resp.status(200).send({
             "status": "Ok", 
-            "message": "Categorias obtenidas con éxito", 
+            "message": "Eventos obtenidos con éxito", 
             "data": events
         });
     else 

@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(30)    // 🧠 Aquí se cambia también  para que No quede de 255 por defecto
       },
       description: {
         type: Sequelize.STRING
