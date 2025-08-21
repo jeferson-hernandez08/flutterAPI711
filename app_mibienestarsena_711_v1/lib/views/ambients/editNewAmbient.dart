@@ -42,9 +42,17 @@ modalEditNewAmbient(context, option, dynamic listItem) {
               );
               Get.back();  // Cerrar el modal
               if(resp) {
-                Get.snackbar('Mensaje', "Se ha añadido correctamente un nuevo ambiente", colorText: Colors.green);
+                Get.snackbar(
+                  'Mensaje', "Se ha añadido correctamente un nuevo ambiente", 
+                  colorText: Colors.white,
+                  backgroundColor: Colors.green
+                );
               } else {
-                  Get.snackbar('Mensaje', "Error al agregar el nuevo ambiente", colorText: Colors.red);
+                  Get.snackbar(
+                    'Mensaje', "Error al agregar el nuevo ambiente", 
+                    colorText: Colors.white,
+                    backgroundColor: Colors.red
+                  );
               }
               
             } else {   

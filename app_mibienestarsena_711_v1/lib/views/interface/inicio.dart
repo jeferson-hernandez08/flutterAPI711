@@ -24,7 +24,7 @@ class _InicioState extends State<Inicio> {
           foregroundColor: Colors.white,
         ),
         body: menuPages[myReactController.getPagina],
-        floatingActionButton: Visibility(       // Aquí comentar para probar
+        floatingActionButton: Visibility(       // Aquí comentar para probar la otra opcion realizada
           visible: (myReactController.getPagina == 3) ? true : false,
           child: FloatingActionButton(    
             backgroundColor: Colors.amber,

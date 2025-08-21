@@ -91,7 +91,7 @@ final response = await http.post(
     body: jsonEncode(data),
   );
 
-  if (response.statusCode == 200) {
+  if (response.statusCode == 201) {
     // Si la respuesta es exitosa, actualizamos la lista de ambientes
     await fetchAPIAmbients();
     return true;  // Retornamos true si se creó correctamente
