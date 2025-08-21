@@ -1,0 +1,71 @@
+const user_service = require('../services/userService');   // Importamos el servicio de users
+
+const testUserApi = (req, resp) => {
+    console.log("TestUserAPI");
+    resp.status(200).send({
+        "status": 200,
+        "message": 'API User state: avaliable - En funcionamiento user OK',
+    });
+};
+
+const getAllUsers  = async(req, resp) => {
+    const users = await user_service.getAllUsers();   // Llamamos al servicio para obtener todos los usuarios
+    if (users) 
+        resp.status(200).send({
+            "status": "Ok", 
+            "message": "usuarios obtenidos con éxito", 
+            "data": users
+        });
+    else 
+        resp.status(400).send({"status": "FAILED", "message": "Error al obtener los usuarios"});
+
+}
+
+// Ruta getOneUser 
+const getOneUser = async (req, resp) => { 
+    const id = req.params.id;   // Obtenemos el id del usuario desde los parámetros de la solicitud
+    const user = await user_service.getOneUser(id);   // Llamamos al servicio para obtener un usuario por su id
+    if (user) 
+        resp.status(200).send({
+            "status": "Ok", 
+            "message": "Usuario traido con éxito", 
+            "data": user
+        });
+    else 
+        resp.status(400).send({"status": "FAILED", "message": "Error al traer el usuario"});
+}
+
+// Ruta createUser
+const createUser = async (req, resp) => { 
+    const {body} = req;
+    const createUser = await user_service.createUser(body.userName, body.email, body.password, body.phone, body.birthdate, body.document, body.gender, body.state, body.rolId, body.passwordResetToken, body.passwordResetExpires);   // Llamamos al servicio para crear un usuario
+    if (createUser) 
+        resp.status(201).send({ status: "Ok",  data: createUser });
+    else 
+        resp.status(400).send({"status": "FAILED", data: createUser});
+};
+
+// Ruta updateUser 
+const updateUser = async (req, resp) => { 
+    const id = req.params.id;   // Obtenemos el id de la usuario desde los parámetros de la solicitud
+    const {body} = req;
+    const updateUser  = await event_service.updateUser (id, body.userName, body.email, body.password, body.phone, body.birthdate, body.document, body.gender, body.state, body.rolId, body.passwordResetToken, body.passwordResetExpires );   // Llamamos al servicio para actualizar un usuario por su id
+    if (updateUser ) 
+        resp.status(200).send({ status: "Ok",  data: updateUser  });
+    else 
+        resp.status(400).send({"status": "FAILED", data: updateUser });
+};
+
+// Ruta deleteUser
+const deleteUser = async (req, resp) => { 
+    const id = req.params.id;   // Obtenemos el id del usuario desde los parámetros de la solicitud
+    const deleteUser = await event_service.deleteUser(id);   // Llamamos al servicio para eliminar un usuario por su id
+    if (deleteUser) 
+        resp.status(200).send({ status: "Ok",  data: deleteUser });
+    else 
+        resp.status(400).send({"status": "FAILED", data: deleteUser});
+};
+
+
+
+module.exports = {testUserApi, getAllUsers, getOneUser, createUser, updateUser, deleteUser };   // Exportamos las funciones para que puedan ser utilizadas en otros archivos

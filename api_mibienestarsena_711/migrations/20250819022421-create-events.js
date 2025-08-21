@@ -36,6 +36,15 @@ module.exports = {
       maxCapacity: {
         type: Sequelize.INTEGER
       },
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users', // 👈 referencia a la tabla Users
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'RESTRICT'   // No se puede eliminar un usuario si tiene eventos
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

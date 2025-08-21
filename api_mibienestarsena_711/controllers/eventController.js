@@ -38,7 +38,7 @@ const getOneEvent = async (req, resp) => {
 // Ruta createEvent
 const createEvent = async (req, resp) => { 
     const {body} = req;
-    const createEvent = await event_service.createEvent(body.name, body.description, body.starDate, body.endDate, body.categoryId, body.state, body.maxCapacity );   // Llamamos al servicio para crear un evento
+    const createEvent = await event_service.createEvent(body.name, body.description, body.starDate, body.endDate, body.categoryId, body.state, body.maxCapacity, body.userId );   // Llamamos al servicio para crear un evento
     if (createEvent) 
         resp.status(201).send({ status: "Ok",  data: createEvent });
     else 
@@ -49,7 +49,7 @@ const createEvent = async (req, resp) => {
 const updateEvent  = async (req, resp) => { 
     const id = req.params.id;   // Obtenemos el id de la categoria desde los parámetros de la solicitud
     const {body} = req;
-    const updateEvent  = await event_service.updateEvent (id, body.name, body.description, body.starDate, body.endDate, body.categoryId, body.state, body.maxCapacity );   // Llamamos al servicio para actualizar un evento por su id
+    const updateEvent  = await event_service.updateEvent (id, body.name, body.description, body.starDate, body.endDate, body.categoryId, body.state, body.userId );   // Llamamos al servicio para actualizar un evento por su id
     if (updateEvent ) 
         resp.status(200).send({ status: "Ok",  data: updateEvent  });
     else 

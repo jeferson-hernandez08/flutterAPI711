@@ -16,6 +16,12 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'categoryId',
         as: 'category'     // alias para acceder a la categoría desde un evento
       });
+
+      // 👇 Un evento pertenece a un usuario
+      Events.belongsTo(models.Users, {
+        foreignKey: 'userId',
+        as: 'user'
+      });
     }
   }
   Events.init({
@@ -25,7 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     endDate: DataTypes.DATE,
     categoryId: DataTypes.INTEGER,
     state: DataTypes.STRING,
-    maxCapacity: DataTypes.INTEGER
+    maxCapacity: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Events',

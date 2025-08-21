@@ -10,6 +10,13 @@ const getAllEvents = async () => {
                     as: "category", // Alias del modelo
                     attributes: ['id', 'name', 'description', 'image'],
             },
+            // Aquí permitimos mostrar los eventos con la informacion del usuario
+            include: {
+                model: db.Users,
+                required: true, // Requerido para que solo muestre los usuarios con eventos
+                as: "user", // Alias del modelo
+                attributes: ['id', 'userName', 'email', 'password', 'phone', 'birthdate', 'document', 'gender'],
+            },
             attributes: {
                 exclude: ['createdAt', 'updatedAt']  // Excluir campos de fecha de creación y actualización
             },
@@ -31,9 +38,9 @@ const getOneEvent = async (id) => {
 }
 
 // Ruta createEvent
-const createEvent = async (name, description, starDate, endDate, categoryId, state, maxCapacity) => { 
+const createEvent = async (name, description, starDate, endDate, categoryId, state, maxCapacity, userId) => { 
     try {
-        const newEvent = await db.Events.create({ name, description, starDate, endDate, categoryId, state, maxCapacity });
+        const newEvent = await db.Events.create({ name, description, starDate, endDate, categoryId, state, maxCapacity, userId });
         return newEvent;
     } catch (error) {
         throw new Error(`Error al crear el evento ${error.message}`);
@@ -41,7 +48,7 @@ const createEvent = async (name, description, starDate, endDate, categoryId, sta
 }
 
 // Ruta updateEvent
-const updateEvent = async (id, name, description, starDate, endDate, categoryId, state, maxCapacity) => { 
+const updateEvent = async (id, name, description, starDate, endDate, categoryId, state, maxCapacity, userId) => { 
     try {
         const event = await db.Events.findByPk(id);
         if (!event) {
@@ -54,6 +61,7 @@ const updateEvent = async (id, name, description, starDate, endDate, categoryId,
         event.categoryId = categoryId;
         event.state = state;
         event.maxCapacity = maxCapacity;
+        event.userId = userId;
         await event.save();
         return event;
     } catch (error) {
