@@ -13,6 +13,7 @@ module.exports = {
         categoryId: 1, // Desarrollo personal
         state: 'activo',
         maxCapacity: 50,
+        userId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -26,6 +27,7 @@ module.exports = {
         categoryId: 3,
         state: 'activo',
         maxCapacity: 200,
+        userId: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -39,6 +41,7 @@ module.exports = {
         categoryId: 4,
         state: 'activo',
         maxCapacity: 150,
+        userId: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -52,6 +55,7 @@ module.exports = {
         categoryId: 5,
         state: 'activo',
         maxCapacity: 22,
+        userId: 4,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -65,6 +69,7 @@ module.exports = {
         categoryId: 6,
         state: 'activo',
         maxCapacity: 300,
+        userId: 5,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -78,6 +83,7 @@ module.exports = {
         categoryId: 7,
         state: 'activo',
         maxCapacity: 120,
+        userId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -91,6 +97,7 @@ module.exports = {
         categoryId: 8,
         state: 'activo',
         maxCapacity: 250,
+        userId: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -104,6 +111,7 @@ module.exports = {
         categoryId: 9,
         state: 'activo',
         maxCapacity: 100,
+        userId: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -117,6 +125,7 @@ module.exports = {
         categoryId: 10,
         state: 'activo',
         maxCapacity: 200,
+        userId: 4,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -130,6 +139,7 @@ module.exports = {
         categoryId: 11,
         state: 'activo',
         maxCapacity: 400,
+        userId: 5,
         createdAt: new Date(),
         updatedAt: new Date()
       }

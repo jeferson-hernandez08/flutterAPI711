@@ -3,20 +3,22 @@ const db = require('../models');
 const getAllEvents = async () => {
     try {
         const allEvents = await db.Events.findAll({
-            // Aquí permitimos mostrar las categorias con la informacion del evento
-            include: {
+            include: [
+                {
+                    // Aquí permitimos mostrar las categorias con la informacion del evento
                     model: db.Categories,
-                    required: true, // Requerido para que solo muestre los eventos con categoria
+                    //required: true, // Requerido para que solo muestre los eventos con categoria
                     as: "category", // Alias del modelo
                     attributes: ['id', 'name', 'description', 'image'],
-            },
-            // Aquí permitimos mostrar los eventos con la informacion del usuario
-            include: {
-                model: db.Users,
-                required: true, // Requerido para que solo muestre los usuarios con eventos
-                as: "user", // Alias del modelo
-                attributes: ['id', 'userName', 'email', 'password', 'phone', 'birthdate', 'document', 'gender'],
-            },
+                },
+                {
+                    // Aquí permitimos mostrar los eventos con la informacion del usuario
+                    model: db.Users,
+                    //required: true, // Requerido para que solo muestre los usuarios con eventos
+                    as: "user", // Alias del modelo
+                    attributes: ['id', 'userName', 'email', 'password', 'phone', 'birthdate', 'document', 'gender'],
+                }
+            ],
             attributes: {
                 exclude: ['createdAt', 'updatedAt']  // Excluir campos de fecha de creación y actualización
             },
