@@ -15,9 +15,11 @@ app.set('PORT', process.env.PORT || 4000)
 app.use(bodyParser.urlencoded({ extended: false })); // Middleware para recibir datos desde un formulario
 app.use(bodyParser.json());                          // Para que el servidor pueda recibir formato Json
 
-// Routes del api
+// Rutas del api
 app.use('/api/v1/categories', require('./api/v1/category.routes'));    // Ruta para categorias
 app.use('/api/v1/events', require('./api/v1/event.routes'));    // Ruta para eventos
+app.use('/api/v1/rols', require('./api/v1/rol.routes'));    // Ruta para roles
+app.use('/api/v1/users', require('./api/v1/user.routes'));    // Ruta para usuarios
 
 // Ruta para categories (Prueba)
 app.use('/api/categories', require('./api/categories'));    // Ruta para categorias

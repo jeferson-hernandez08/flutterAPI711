@@ -1,6 +1,6 @@
 const user_service = require('../services/userService');   // Importamos el servicio de users
 
-const testUserApi = (req, resp) => {
+const testUserAPI = (req, resp) => {
     console.log("TestUserAPI");
     resp.status(200).send({
         "status": 200,
@@ -68,4 +68,4 @@ const deleteUser = async (req, resp) => {
 
 
 
-module.exports = {testUserApi, getAllUsers, getOneUser, createUser, updateUser, deleteUser };   // Exportamos las funciones para que puedan ser utilizadas en otros archivos
+module.exports = {testUserAPI, getAllUsers, getOneUser, createUser, updateUser, deleteUser };   // Exportamos las funciones para que puedan ser utilizadas en otros archivos
