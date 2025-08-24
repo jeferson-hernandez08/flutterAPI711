@@ -35,7 +35,7 @@ const getOneEvent = async (id) => {
         const event = await db.Events.findByPk(id);
         return event;
     } catch (error) {
-        throw new error(`Error al traer el evento ${error.message}`); 
+        throw new Error(`Error al traer el evento ${error.message}`); 
     }    
 }
 

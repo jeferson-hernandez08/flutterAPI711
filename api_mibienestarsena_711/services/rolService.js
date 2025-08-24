@@ -5,7 +5,7 @@ const getAllRols = async () => {
         const allRols = await db.Rols.findAll();
         return allRols;
     } catch (error) {
-        throw new error(`Error al traer los roles ${error.meessage}`); 
+        throw new Error(`Error al traer los roles ${error.meessage}`); 
     }    
 };
 
@@ -15,7 +15,7 @@ const getOneRol = async (id) => {
         const rol = await db.Rols.findByPk(id);
         return rol;
     } catch (error) {
-        throw new error(`Error al traer el rol ${error.message}`); 
+        throw new Error(`Error al traer el rol ${error.message}`); 
     }    
 }
 

@@ -5,7 +5,7 @@ const getAllCategories = async () => {
         const allCategories = await db.Categories.findAll();
         return allCategories;
     } catch (error) {
-        throw new error(`Error al traer las categorias ${error.meessage}`); 
+        throw new Error(`Error al traer las categorias ${error.meessage}`); 
     }    
 };
 
@@ -15,7 +15,7 @@ const getOneCategory = async (id) => {
         const category = await db.Categories.findByPk(id);
         return category;
     } catch (error) {
-        throw new error(`Error al traer la categoria ${error.message}`); 
+        throw new Error(`Error al traer la categoria ${error.message}`); 
     }    
 }
 
