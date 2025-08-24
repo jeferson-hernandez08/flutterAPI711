@@ -25,7 +25,7 @@ const createCategory = async (name, description, image) => {
         const newCategory = await db.Categories.create({ name, description, image });
         return newCategory;
     } catch (error) {
-        throw new Error(`Error al crear el usuario ${error.message}`);
+        throw new Error(`Error al crear la categoria ${error.message}`);
     }
 }
 

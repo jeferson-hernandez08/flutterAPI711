@@ -4,7 +4,7 @@ const testUserAPI = (req, resp) => {
     console.log("TestUserAPI");
     resp.status(200).send({
         "status": 200,
-        "message": 'API User state: avaliable - En funcionamiento user OK',
+        "message": 'API User state: avaliable - En funcionamiento Users OK',
     });
 };
 
@@ -49,7 +49,7 @@ const createUser = async (req, resp) => {
 const updateUser = async (req, resp) => { 
     const id = req.params.id;   // Obtenemos el id de la usuario desde los parámetros de la solicitud
     const {body} = req;
-    const updateUser  = await event_service.updateUser (id, body.userName, body.email, body.password, body.phone, body.birthdate, body.document, body.gender, body.state, body.rolId, body.passwordResetToken, body.passwordResetExpires );   // Llamamos al servicio para actualizar un usuario por su id
+    const updateUser  = await user_service.updateUser (id, body.userName, body.email, body.password, body.phone, body.birthdate, body.document, body.gender, body.state, body.rolId, body.passwordResetToken, body.passwordResetExpires );   // Llamamos al servicio para actualizar un usuario por su id
     if (updateUser ) 
         resp.status(200).send({ status: "Ok",  data: updateUser  });
     else 
@@ -59,7 +59,7 @@ const updateUser = async (req, resp) => {
 // Ruta deleteUser
 const deleteUser = async (req, resp) => { 
     const id = req.params.id;   // Obtenemos el id del usuario desde los parámetros de la solicitud
-    const deleteUser = await event_service.deleteUser(id);   // Llamamos al servicio para eliminar un usuario por su id
+    const deleteUser = await user_service.deleteUser(id);   // Llamamos al servicio para eliminar un usuario por su id
     if (deleteUser) 
         resp.status(200).send({ status: "Ok",  data: deleteUser });
     else 

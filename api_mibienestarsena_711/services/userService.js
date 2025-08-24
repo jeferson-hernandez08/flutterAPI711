@@ -14,7 +14,7 @@ const getAllUsers = async () => {
                 exclude: ['createdAt', 'updatedAt']  // Excluir campos de fecha de creación y actualización
             },
         });
-        return allEvents;
+        return allUsers;
     } catch (error) {
         throw new Error(`Error al traer los usuarios ${error.meessage}`); 
     }    
@@ -45,7 +45,7 @@ const updateUser = async (id, userName, email, password, phone, birthdate, docum
     try {
         const user = await db.Users.findByPk(id);
         if (!user) {
-            throw new Error('Evento no encontrado');
+            throw new Error('Usuario no encontrado');
         }
         user.userName = userName;
         user.email = email;

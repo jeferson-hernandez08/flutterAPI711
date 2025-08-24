@@ -4,7 +4,7 @@ const testCategoryAPI = (req, resp) => {
     console.log("TestCategoryAPI");
     resp.status(200).send({
         "status": 200,
-        "message": 'API User state: avaliable - En funcionamiento OK',
+        "message": 'API User state: avaliable - En funcionamiento categories OK',
     });
 };
 
@@ -35,7 +35,7 @@ const getOneCategory = async (req, resp) => {
         resp.status(400).send({"status": "FAILED", "message": "Error al traer la categoria"});
 }
 
-// Ruta createUser
+// Ruta createCategory
 const createCategory = async (req, resp) => { 
     const {body} = req;
     const createCategory = await category_service.createCategory(body.name, body.description, body.image);   // Llamamos al servicio para crear una nueva categoria
