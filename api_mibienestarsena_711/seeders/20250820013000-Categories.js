@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('Categories', [
+    await queryInterface.bulkInsert('categories', [
       {
         name: 'Tecnología e Innovación',
         description: 'Eventos relacionados con avances tecnológicos, innovación y nuevas tendencias digitales.',
@@ -74,7 +74,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Categories', null, {});
+    await queryInterface.bulkDelete('categories', null, {});
 
     /**
      * Add commands to revert seed here.

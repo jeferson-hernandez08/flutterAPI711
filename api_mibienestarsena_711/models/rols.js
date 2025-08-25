@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Rols',
+    modelName: 'Rols',    // Nombre del modelo JavaScript
+    tableName: 'rols'     // Nombre de la tabla física en BD
   });
   return Rols;
 };

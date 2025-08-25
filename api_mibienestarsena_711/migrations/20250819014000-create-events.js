@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Events', {
+    await queryInterface.createTable('events', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -24,7 +24,7 @@ module.exports = {
       categoryId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Categories', // 👈🧠referencia a la tabla Categories
+          model: 'categories', // 👈🧠referencia a la tabla Categories | ← Esto NO se refiere al modelo JavaScript, , sino al nombre de la tabla física en la base de datos.
           key: 'id'
         },
         onUpdate: 'CASCADE',
@@ -39,7 +39,7 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Users', // 👈 referencia a la tabla Users
+          model: 'users', // 👈 referencia a la tabla Users | ← Esto NO se refiere al modelo JavaScript, , sino al nombre de la tabla física en la base de datos.
           key: 'id'
         },
         onUpdate: 'CASCADE',
@@ -56,7 +56,7 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Events');
+    await queryInterface.dropTable('events');
   }
 };
 

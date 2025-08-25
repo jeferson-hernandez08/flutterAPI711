@@ -5,7 +5,9 @@ const getAllCategories = async () => {
         const allCategories = await db.Categories.findAll();
         return allCategories;
     } catch (error) {
-        throw new Error(`Error al traer las categorias ${error.meessage}`); 
+        //throw new Error(`Error al traer las categorias ${error.meessage}`); 
+        const errorMsg = error.message || 'Mensaje de error no disponible';
+        throw new Error(`Error al traer las categorias: ${errorMsg}`);
     }    
 };
 

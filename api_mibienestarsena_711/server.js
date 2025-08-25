@@ -22,7 +22,7 @@ app.use('/api/v1/rols', require('./api/v1/rol.routes'));    // Ruta para roles
 app.use('/api/v1/users', require('./api/v1/user.routes'));    // Ruta para usuarios
 
 // Ruta para categories (Prueba)
-app.use('/api/categories', require('./api/categories'));    // Ruta para categorias
+//app.use('/api/categories', require('./api/categories'));    // Ruta para categorias
 
 
 app.listen(app.get('PORT'), ()=>{

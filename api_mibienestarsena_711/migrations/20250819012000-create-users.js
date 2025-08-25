@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('users', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -36,7 +36,7 @@ module.exports = {
       rolId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Rols',   // 👈 referencia a la tabla Roles
+          model: 'rols',   // 👈 referencia a la tabla Roles | ← Esto NO se refiere al modelo JavaScript, , sino al nombre de la tabla física en la base de datos.
           key: 'id'
         },
         onUpdate: 'CASCADE',
@@ -59,6 +59,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('users');
   }
 };

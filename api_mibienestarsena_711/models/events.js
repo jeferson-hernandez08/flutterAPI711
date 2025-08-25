@@ -35,7 +35,8 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
   }, {
     sequelize,
-    modelName: 'Events',
+    modelName: 'Events',   // Nombre del modelo JavaScript
+    tableName: 'events'    // Nombre de la tabla física en BD  
   });
   return Events;
 };

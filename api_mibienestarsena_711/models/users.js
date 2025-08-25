@@ -39,7 +39,8 @@ module.exports = (sequelize, DataTypes) => {
     passwordResetExpires: DataTypes.DATE
   }, {
     sequelize,
-    modelName: 'Users',
+    modelName: 'Users',   // Nombre del modelo JavaScript
+    tableName: 'users'    // Nombre de la tabla física en BD
   });
   return Users;
 };

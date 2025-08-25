@@ -24,7 +24,8 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING   // Aquí agregamos el nuevo campo
   }, {
     sequelize,
-    modelName: 'Categories',
+    modelName: 'Categories',  // Nombre del modelo JavaScript
+    tableName: 'categories'   // Nombre de la tabla física en BD
   });
   return Categories;
 };
