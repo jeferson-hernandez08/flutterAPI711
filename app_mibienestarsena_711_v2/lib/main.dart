@@ -1,7 +1,7 @@
-import 'package:app_mibienestarsena_711_v2/views/ambients/viewAmbients.dart';
 import 'package:app_mibienestarsena_711_v2/views/interface/homePrincipal.dart';
 import 'package:app_mibienestarsena_711_v2/views/rols/viewRols.dart';
 import 'package:app_mibienestarsena_711_v2/views/testviews/viewPlaceHolder.dart';
+import 'package:app_mibienestarsena_711_v2/views/users/viewUsers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'controllers/reactController.dart';
@@ -20,9 +20,10 @@ ReactController myReactController = Get.find();
 // Lista de páginas
 List menuPages = [
   HomePrincipal(),     // 0 Home Principal
-  ViewPicsum(),        // 1 View Picsum
-  Viewplaceholder(),    // 2 View PlaceHolder
-  ViewAmbientsCPIC(),   // 3 View Ambientes CPIC
-  ViewRolsCPIC()       // 4 View rols CPIC
-
+  // ViewPicsum(),        // 1 View Picsum
+  // Viewplaceholder(),    // 2 View PlaceHolder
+  // ViewAmbientsCPIC(),   // 3 View Ambientes CPIC
+  ViewRolsCPIC(),       // 1 View rols CPIC
+  ViewUsersCPIC()       // 2 View rols CPIC
+ 
 ];

@@ -41,7 +41,7 @@ viewDeleteRol(context, itemList) {
                         
                         // Título
                         const Text(
-                          '¿Eliminar este ambiente?',
+                          '¿Eliminar este rol?',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -98,7 +98,7 @@ viewDeleteRol(context, itemList) {
                                 onPressed: () async {
                                   try {
                                     // Lógica para eliminar el ambiente | Lamamos la función API apiBienestar.dart
-                                    //await fetchDeleteRol(itemList['id']);  
+                                    await fetchDeleteRol(itemList['id']);  
                                     
                                     // Cerrar el modal
                                     Navigator.pop(context);

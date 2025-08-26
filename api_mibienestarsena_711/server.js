@@ -3,19 +3,8 @@ const app     = express()
 const bodyParser = require('body-parser');     // Importar body-parser para manejar datos JSON
 const cors = require('cors');                  // 👈 Importa CORS
 
-// Habilitar CORS para todas las rutas  👈 CORS
-const corsOptions = {
-  origin: '*', // Permite todos los orígenes (en producción, especifica tu dominio)
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
-  credentials: true,
-  optionsSuccessStatus: 200 // Para navegadores legacy
-};
-
-app.use(cors(corsOptions));
-
-// Manejar preflight requests para todas las rutas
-app.options('*', cors(corsOptions));
+// Uso de cors 👇🏼
+app.use(cors());
 
 //------
 app.get('/',(request, response)=>{

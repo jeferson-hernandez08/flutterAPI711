@@ -19,24 +19,14 @@ viewItemRol(context, itemList) {
               subtitle: Text(itemList['id'].toString()),
             ),
             Divider(),
+            
             ListTile(
               leading: Icon(Icons.admin_panel_settings),
               title: Text('Nombre'),
               subtitle: Text(itemList['name'] ?? 'No disponible'),
             ),
             Divider(),
-            // ListTile(
-            //   leading: Icon(Icons.details),
-            //   title: Text('Estado'),
-            //   subtitle: Text(itemList['state'] ?? 'No disponible'),
-            // ),
-            // Divider(),
-            // ListTile(
-            //   leading: Icon(Icons.description),
-            //   title: Text('Descripción'),
-            //   subtitle: Text(itemList['usability'] ?? 'No disponible'),
-            // ),
-            // Divider(),
+      
           ],
         ),
       );
