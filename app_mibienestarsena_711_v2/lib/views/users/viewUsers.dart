@@ -35,9 +35,9 @@ class _ViewUsersCPICState extends State<ViewUsersCPIC> {
       ),
       body: Obx(
         () => ListView.builder(
-          itemCount: myReactController.getListRols.length,
+          itemCount: myReactController.getListUsers.length,
           itemBuilder: (BuildContext context, int index) {
-            final itemList = myReactController.getListRols[index];
+            final itemList = myReactController.getListUsers[index];
             return Card(
               child: ListTile(
                 leading: Column(
@@ -47,8 +47,8 @@ class _ViewUsersCPICState extends State<ViewUsersCPIC> {
                     Text(itemList['id'].toString()),
                   ],
                 ),
-                title: Text(itemList['userName']),
-                subtitle: Text(itemList['email']),
+                title: Text(itemList['userName'] ?? 'Sin nombre'),
+                subtitle: Text(itemList['email'] ?? 'Sin email'),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

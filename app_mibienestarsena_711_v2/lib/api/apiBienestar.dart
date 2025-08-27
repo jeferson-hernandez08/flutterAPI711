@@ -125,13 +125,13 @@ Future fetchAPIUsers() async {
   if (response.statusCode == 200) {
     print("Respuesta API: ${response.body}"); // imprime lo que devuelve la API
     //print(jsonDecode(response.body)['data']);
-    myReactController.setListRols(jsonDecode(response.body)['data']);
+    myReactController.setListUsers(jsonDecode(response.body)['data']);
   } else {
     throw Exception('Error al traer los datos de API users');
   }
 }
 
-Future newUserApi(newUserName, newEmail, newPassword, newPhone, newBirthdate, newDocument, newGender, newState, newRolId, newPasswordResetToken, newPasswordResetExpires) async {
+Future newUserApi(newUserName, newEmail, newPassword, newPhone, newBirthdate, newDocument, newGender, newState, newRolId) async {
   const headers = {
     'Content-Type': 'application/json',
   };
@@ -145,12 +145,13 @@ Future newUserApi(newUserName, newEmail, newPassword, newPhone, newBirthdate, ne
     'document': newDocument,
     'gender': newGender,
     'state': newState,
-    'rolId': newRolId,
-    'passwordResetToken': newPasswordResetToken,
-    'passwordResetExpires': newPasswordResetExpires
+    'rolId': newRolId
+    //'passwordResetToken': newPasswordResetToken,
+    //'passwordResetExpires': newPasswordResetExpires
   };
 
 dynamic url = Uri.parse('${baseUrl["mibienestarsena_api"]}/api/v1/users');
+print('URL: $url');
 
 final response = await http.post(
     url,
@@ -169,7 +170,7 @@ final response = await http.post(
 
 }
 
-Future editUserApi(id, newUserName, newEmail, newPassword, newPhone, newBirthdate, newDocument, newGender, newState, newRolId, newPasswordResetToken, newPasswordResetExpires) async {
+Future editUserApi(id, newUserName, newEmail, newPassword, newPhone, newBirthdate, newDocument, newGender, newState, newRolId) async {
   const headers = {
     'Content-Type': 'application/json',
   };
@@ -183,9 +184,9 @@ Future editUserApi(id, newUserName, newEmail, newPassword, newPhone, newBirthdat
     'document': newDocument,
     'gender': newGender,
     'state': newState,
-    'rolId': newRolId,
-    'passwordResetToken': newPasswordResetToken,
-    'passwordResetExpires': newPasswordResetExpires
+    'rolId': newRolId
+    // 'passwordResetToken': newPasswordResetToken,
+    // 'passwordResetExpires': newPasswordResetExpires
   };
 
   dynamic url = Uri.parse('${baseUrl["mibienestarsena_api"]}/api/v1/users/$id');
