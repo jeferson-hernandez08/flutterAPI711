@@ -219,3 +219,189 @@ Future deleteUserApi(int id) async {
     throw Exception('Error al eliminar el usuario con ID: $id');
   }
 }
+
+//******CRUD Tabla Categories******
+Future fetchAPICategories() async {
+  final url = '${baseUrl["mibienestarsena_api"]}/api/v1/categories';
+  print(url);
+  final response = await http.get(Uri.parse(url));
+
+  if (response.statusCode == 200) {
+    print("Respuesta API: ${response.body}"); // imprime lo que devuelve la API
+    //print(jsonDecode(response.body)['data']);
+    myReactController.setListCategories(jsonDecode(response.body)['data']);
+  } else {
+    throw Exception('Error al traer los datos de API categories');
+  }
+}
+
+Future newCategoryApi(newName, newDescription, newImage) async {
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+
+  dynamic data = {
+    'name': newName,
+    'description': newDescription,
+    'image': newImage
+  };
+
+dynamic url = Uri.parse('${baseUrl["mibienestarsena_api"]}/api/v1/categories');
+print('URL: $url');
+
+final response = await http.post(
+    url,
+    headers: headers,
+    body: jsonEncode(data),
+  );
+
+  if (response.statusCode == 201) {
+    // Si la respuesta es exitosa, actualizamos la lista de categories
+    await fetchAPICategories();
+    return true;  // Retornamos true si se creó correctamente
+  } else {
+    //throw Exception('Error al crear el nuevo ambiente');
+    return false;  // Retornamos false si hubo un error
+  }
+
+}
+
+Future editCategoryApi(id, newName, newDescription, newImage) async {
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+
+  dynamic data = {
+    'name': newName,
+    'description': newDescription,
+    'image': newImage
+  };
+
+  dynamic url = Uri.parse('${baseUrl["mibienestarsena_api"]}/api/v1/categories/$id');
+
+  final response = await http.put(
+    url,
+    headers: headers,
+    body: jsonEncode(data),
+  );
+
+  if (response.statusCode == 200) {
+    // Si la respuesta es exitosa, actualizamos la lista de categorias
+    await fetchAPICategories();
+    return true;  // Retornamos true si se creó correctamente
+  } else {
+    //throw Exception('Error al crear el nuevo rol');
+    return false;  // Retornamos false si hubo un error
+  }
+
+}
+
+Future deleteCategoryApi(int id) async {
+  final url = '${baseUrl["mibienestarsena_api"]}/api/v1/categories/$id';   // Recibir el utl con id rol a aliminar
+  final response = await http.delete(Uri.parse(url));
+
+  if (response.statusCode == 200) {
+    // Actualizamos la lista de ambientes después de eliminar un usuario
+    await fetchAPICategories();
+  } else {
+    throw Exception('Error al eliminar la categoria con ID: $id');
+  }
+}
+
+//******CRUD Tabla Events******
+Future fetchAPIEvents() async {
+  final url = '${baseUrl["mibienestarsena_api"]}/api/v1/events';
+  print(url);
+  final response = await http.get(Uri.parse(url));
+
+  if (response.statusCode == 200) {
+    print("Respuesta API: ${response.body}"); // imprime lo que devuelve la API
+    //print(jsonDecode(response.body)['data']);
+    myReactController.setListEvents(jsonDecode(response.body)['data']);
+  } else {
+    throw Exception('Error al traer los datos de API eventos');
+  }
+}
+
+Future newEventApi(newName, newDescription, newStarDate, newEndDate, newCategoryId, newState, newMaxCapacity, newUserId ) async {
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+
+  dynamic data = {
+    'name': newName,
+    'description': newDescription,
+    'starDate': newStarDate,
+    'endDate': newEndDate,
+    'categoryId': newCategoryId,
+    'state': newState,
+    'maxCapacity': newMaxCapacity,
+    'userId': newUserId
+  };
+
+dynamic url = Uri.parse('${baseUrl["mibienestarsena_api"]}/api/v1/events');
+print('URL: $url');
+
+final response = await http.post(
+    url,
+    headers: headers,
+    body: jsonEncode(data),
+  );
+
+  if (response.statusCode == 201) {
+    // Si la respuesta es exitosa, actualizamos la lista de eventos
+    await fetchAPIEvents();
+    return true;  // Retornamos true si se creó correctamente
+  } else {
+    //throw Exception('Error al crear el nuevo ambiente');
+    return false;  // Retornamos false si hubo un error
+  }
+
+}
+
+Future editEventApi(id, newName, newDescription, newStarDate, newEndDate, newCategoryId, newState, newMaxCapacity, newUserId) async {
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+
+  dynamic data = {
+    'name': newName,
+    'description': newDescription,
+    'starDate': newStarDate,
+    'endDate': newEndDate,
+    'categoryId': newCategoryId,
+    'state': newState,
+    'maxCapacity': newMaxCapacity,
+    'userId': newUserId
+  };
+
+  dynamic url = Uri.parse('${baseUrl["mibienestarsena_api"]}/api/v1/events/$id');
+
+  final response = await http.put(
+    url,
+    headers: headers,
+    body: jsonEncode(data),
+  );
+
+  if (response.statusCode == 200) {
+    // Si la respuesta es exitosa, actualizamos la lista de eventos
+    await fetchAPIEvents();
+    return true;  // Retornamos true si se creó correctamente
+  } else {
+    //throw Exception('Error al crear el nuevo rol');
+    return false;  // Retornamos false si hubo un error
+  }
+
+}
+
+Future deleteEventApi(int id) async {
+  final url = '${baseUrl["mibienestarsena_api"]}/api/v1/events/$id';   // Recibir el utl con id event a aliminar
+  final response = await http.delete(Uri.parse(url));
+
+  if (response.statusCode == 200) {
+    // Actualizamos la lista de ambientes después de eliminar un usuario
+    await fetchAPIEvents();
+  } else {
+    throw Exception('Error al eliminar el evento con ID: $id');
+  }
+}

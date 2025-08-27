@@ -5,6 +5,9 @@ import 'package:get/get.dart';
 final TextEditingController nameController = TextEditingController();
 
 modalEditNewRol(context, option, dynamic listItem) {
+  // Crear una clave global para el formulario | Para campo obligatorio
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  
   showModalBottomSheet(
     isScrollControlled: true,
     context: context, 
@@ -26,6 +29,17 @@ modalEditNewRol(context, option, dynamic listItem) {
           foregroundColor: Colors.white,
           child: Icon(option == "new" ? Icons.add : Icons.edit),
           onPressed: () async {
+            // Validar formulario antes de proceder para campo obligatorio
+            if (!_formKey.currentState!.validate()) {
+              Get.snackbar(
+                'Campos incompletos', 
+                'Por favor, complete todos los campos obligatorios',
+                colorText: Colors.white,
+                backgroundColor: Colors.orange
+              );
+              return;
+            }
+
             if(option == "new") {
               // Lógica para crear un nuevo rol
               bool resp = await newRolApi(
@@ -67,17 +81,26 @@ modalEditNewRol(context, option, dynamic listItem) {
           }),
           body: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ListView(
-              children: [
-                TextFormField(
-                  controller: nameController,
-                  decoration: InputDecoration(
-                    labelText: 'Nombre del Rol',
-                    hintText: 'Ingrese nombre del Rol',
+            child: Form(      // Form para campo obligatorio
+              key: _formKey, // Asignar la clave al formulario para campo obligatorio
+              child: ListView(
+                children: [
+                  TextFormField(
+                    controller: nameController,
+                    decoration: InputDecoration(
+                      labelText: 'Nombre del Rol *',
+                      hintText: 'Ingrese nombre del Rol',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Este campo es obligatorio';
+                      }
+                      return null;
+                    },
                   ),
-                ),
-    
-              ],
+                  
+                ],
+              ),
             ),
           ),
       );

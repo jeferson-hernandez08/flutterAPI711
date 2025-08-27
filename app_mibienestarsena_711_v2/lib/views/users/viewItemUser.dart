@@ -1,6 +1,26 @@
+import 'package:app_mibienestarsena_711_v2/main.dart';
 import 'package:flutter/material.dart';
+import 'package:app_mibienestarsena_711_v2/api/apiBienestar.dart'; // Importa tu API
 
-viewItemUser(context, itemList) {
+viewItemUser(context, itemList) async {
+  // Cargar roles si no están disponibles
+  if (myReactController.getListRols.isEmpty) {
+    await fetchAPIRols();
+  }
+
+  // Función para obtener el nombre del rol basado en el rolId
+  String getRolName(int? rolId) {
+    if (rolId == null) return 'No disponible';
+    
+    // Buscar el rol en la lista de roles del controlador
+    final rol = myReactController.getListRols.firstWhere(
+      (rol) => rol['id'] == rolId,
+      orElse: () => {'name': 'Rol no encontrado'},
+    );
+    
+    return rol['name'] ?? 'Rol no encontrado';
+  }
+
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -58,21 +78,25 @@ viewItemUser(context, itemList) {
             ListTile(
               leading: Icon(Icons.transgender),
               title: Text('Género'),
-              subtitle: Text(itemList['gender'] ?? 'No disponible'),
+              subtitle: Text(itemList['gender'] == 'M' ? 'Masculino' : 
+                            itemList['gender'] == 'F' ? 'Femenino' : 
+                            'No disponible'),
             ),
             Divider(),
 
             ListTile(
               leading: Icon(Icons.toggle_on),
               title: Text('Estado'),
-              subtitle: Text(itemList['state'] ?? 'No disponible'),
+              subtitle: Text(itemList['state']?.toString() == 'true' ? 'Activo' : 
+                            itemList['state']?.toString() == 'false' ? 'Inactivo' : 
+                            'No disponible'),
             ),
             Divider(),
 
             ListTile(
               leading: Icon(Icons.security),
-              title: Text('Rol ID'),
-              subtitle: Text(itemList['rolId']?.toString() ?? 'No disponible'),
+              title: Text('Rol'),
+              subtitle: Text(getRolName(itemList['rolId'])),
             ),
             Divider(),
 

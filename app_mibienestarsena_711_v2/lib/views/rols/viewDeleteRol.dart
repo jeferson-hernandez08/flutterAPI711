@@ -106,7 +106,7 @@ viewDeleteRol(context, itemList) {
                                     // Mostramos mensaje de éxito
                                     Get.snackbar(
                                       'Éxito',
-                                      'Ambiente eliminado correctamente',
+                                      'Rol eliminado correctamente',
                                       backgroundColor: Colors.green,
                                       colorText: Colors.white,
                                       duration: const Duration(seconds: 2),

@@ -1,3 +1,5 @@
+import 'package:app_mibienestarsena_711_v2/views/categories/viewCategories.dart';
+import 'package:app_mibienestarsena_711_v2/views/events/viewEvents.dart';
 import 'package:app_mibienestarsena_711_v2/views/interface/homePrincipal.dart';
 import 'package:app_mibienestarsena_711_v2/views/rols/viewRols.dart';
 import 'package:app_mibienestarsena_711_v2/views/testviews/viewPlaceHolder.dart';
@@ -19,11 +21,12 @@ ReactController myReactController = Get.find();
 
 // Lista de páginas
 List menuPages = [
-  HomePrincipal(),     // 0 Home Principal
-  // ViewPicsum(),        // 1 View Picsum
-  // Viewplaceholder(),    // 2 View PlaceHolder
-  // ViewAmbientsCPIC(),   // 3 View Ambientes CPIC
-  ViewRolsCPIC(),       // 1 View rols CPIC
-  ViewUsersCPIC()       // 2 View rols CPIC
+  HomePrincipal(),       // 0 Home Principal
+  // ViewPicsum(),            // 1 View Picsum
+  // Viewplaceholder(),       // 2 View PlaceHolder
+  ViewRolsCPIC(),        // 1 View rols CPIC
+  ViewUsersCPIC(),       // 2 View user CPIC
+  ViewCategoriesCPIC(),  // 3 View categories CPIC
+  ViewEventsCPIC()       // 4 View events CPIC
  
 ];

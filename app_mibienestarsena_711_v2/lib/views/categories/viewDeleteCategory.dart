@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-viewDeleteUser(context, itemList) {
+viewDeleteCategory(context, itemList) {
   showModalBottomSheet(
   context: context,
   isScrollControlled: true,  
@@ -11,7 +11,7 @@ viewDeleteUser(context, itemList) {
       return Scaffold(
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
-          title: Text('Confirmar Eliminación del usuario'),
+          title: Text('Confirmar Eliminación de la categoría'),
           backgroundColor: Colors.red,
           foregroundColor: Colors.white,
           centerTitle: true,     // Propiedad para centrar el titulo
@@ -41,7 +41,7 @@ viewDeleteUser(context, itemList) {
                         
                         // Título
                         const Text(
-                          '¿Eliminar este rol?',
+                          '¿Eliminar esta categoría?',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -51,9 +51,9 @@ viewDeleteUser(context, itemList) {
                         ),
                         const SizedBox(height: 15),
                         
-                        // Nombre del ambiente
+                        // Nombre de la categoría
                         Text(
-                          itemList['userName'],
+                          itemList['name'],
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
@@ -62,7 +62,18 @@ viewDeleteUser(context, itemList) {
                         ),
                         const SizedBox(height: 10),
                         
-                        // ID del ambiente
+                        // Descripción de la categoría
+                        Text(
+                          'Descripción: ${itemList['description'] ?? 'Sin descripción'}',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey[600],
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 10),
+                        
+                        // ID de la categoría
                         Text(
                           'ID: ${itemList['id']}',
                           style: TextStyle(
@@ -97,8 +108,8 @@ viewDeleteUser(context, itemList) {
                               child: ElevatedButton(
                                 onPressed: () async {
                                   try {
-                                    // Lógica para eliminar el ambiente | Lamamos la función API apiBienestar.dart
-                                    await deleteUserApi(itemList['id']);  
+                                    // Lógica para eliminar la categoría | Llamamos la función API apiBienestar.dart
+                                    await deleteCategoryApi(itemList['id']);  
                                     
                                     // Cerrar el modal
                                     Navigator.pop(context);
@@ -106,19 +117,19 @@ viewDeleteUser(context, itemList) {
                                     // Mostramos mensaje de éxito
                                     Get.snackbar(
                                       'Éxito',
-                                      'Usuario eliminado correctamente',
+                                      'Categoría eliminada correctamente',
                                       backgroundColor: Colors.green,
                                       colorText: Colors.white,
                                       duration: const Duration(seconds: 2),
                                     );
                                     
-                                    // Actualizamos la lista de roles
-                                    fetchAPIUsers();
+                                    // Actualizamos la lista de categorías
+                                    fetchAPICategories();
                                     
                                   } catch (e) {
                                     Get.snackbar(
                                       'Error',
-                                      'Error al eliminar rol: ${e.toString()}',
+                                      'Error al eliminar categoría: ${e.toString()}',
                                       backgroundColor: Colors.red,
                                       colorText: Colors.white,
                                     );
@@ -146,7 +157,7 @@ viewDeleteUser(context, itemList) {
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
                   child: Text(
-                    'Despues de eliminar, esta acción no se puede deshacer.',
+                    'Después de eliminar, esta acción no se puede deshacer.',
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey[600],

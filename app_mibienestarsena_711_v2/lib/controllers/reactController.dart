@@ -8,6 +8,8 @@ class ReactController extends GetxController  {
   final _listAmbients = [].obs; 
   final _listRols = [].obs; 
   final _listUsers = [].obs; 
+  final _listCategories = [].obs; 
+  final _listEvents = [].obs; 
 
   void setPagina(int newPage){
     _pagina.value = newPage;
@@ -27,8 +29,14 @@ class ReactController extends GetxController  {
   void setListRols(List itemList){
     _listRols.value = itemList;
   }
-   void setListUsers(List itemList){
+  void setListUsers(List itemList){
     _listUsers.value = itemList;
+  }
+  void setListCategories(List itemList){
+    _listCategories.value = itemList;
+  }
+  void setListEvents(List itemList){
+    _listEvents.value = itemList;
   }
  
   int get getPagina => _pagina.value;
@@ -38,4 +46,6 @@ class ReactController extends GetxController  {
   List get getListAmbients => _listAmbients.value;     
   List get getListRols => _listRols.value;     
   List get getListUsers => _listUsers.value;     
+  List get getListCategories => _listCategories.value;     
+  List get getListEvents => _listEvents.value;     
 }

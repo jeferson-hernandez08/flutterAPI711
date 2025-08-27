@@ -1,4 +1,6 @@
 import 'package:app_mibienestarsena_711_v2/api/apiBienestar.dart';
+import 'package:app_mibienestarsena_711_v2/views/categories/editNewCategory.dart';
+import 'package:app_mibienestarsena_711_v2/views/events/editNewEvent.dart';
 import 'package:app_mibienestarsena_711_v2/views/rols/editNewRol.dart';
 import 'package:app_mibienestarsena_711_v2/views/users/editNewUser.dart';
 import 'package:flutter/material.dart';
@@ -26,17 +28,21 @@ class _InicioState extends State<Inicio> {
         ),
         body: menuPages[myReactController.getPagina],
         floatingActionButton: Visibility(       // Aquí comentar para probar la otra opcion realizada de viewCreateAmbient.dart
-          visible: (myReactController.getPagina == 1 || myReactController.getPagina == 2 ) ? true : false,
+          visible: (myReactController.getPagina == 1 || myReactController.getPagina == 2 || myReactController.getPagina == 3 || myReactController.getPagina == 4 ) ? true : false,
           child: FloatingActionButton(    
             backgroundColor: Colors.amber,
             foregroundColor: Colors.white,
             child: Icon(Icons.add),
             onPressed: () {
               var page = myReactController.getPagina;
-              if (page == 1) {  // Agregar editar rol
+              if (page == 1) {  // Crear editar rols
                 modalEditNewRol(context, "new", null);
-              } else if(page == 2) {  // Agregar editar user
+              } else if(page == 2) {  // Crear editar users
                 modalEditNewUser(context, "new", null);
+              } else if (page == 3) {   // Crear editar category
+                modalEditNewCategory(context, "new", null);
+              } else if (page == 4) {    // Crear editar events
+                modalEditNewEvent(context, "new", null);
               }
             }),
         ),
@@ -76,6 +82,7 @@ class _InicioState extends State<Inicio> {
               //   },
               // ),
               Divider(),
+
               ListTile(
                 title: Text('Listado del Roles CPIC'),
                 leading: Icon(Icons.image),
@@ -87,7 +94,7 @@ class _InicioState extends State<Inicio> {
                 },
               ),
               Divider(),
-              Divider(),
+
               ListTile(
                 title: Text('Listado del Usuarios CPIC'),
                 leading: Icon(Icons.image),
@@ -95,6 +102,30 @@ class _InicioState extends State<Inicio> {
                 onTap: (){
                   myReactController.setTituloAppBar('Listado Usuarios CPIC');
                   myReactController.setPagina(2);   // Aqui se trae en main el array List menuPages = [
+                  Get.back();
+                },
+              ),
+              Divider(),
+
+              ListTile(
+                title: Text('Listado de Categorias de Eventos CPIC'),
+                leading: Icon(Icons.image),
+                trailing: Icon(Icons.arrow_forward_ios),
+                onTap: (){
+                  myReactController.setTituloAppBar('Listado Categorias CPIC');
+                  myReactController.setPagina(3);   // Aqui se trae en main el array List menuPages = [
+                  Get.back();
+                },
+              ),
+              Divider(),
+
+              ListTile(
+                title: Text('Listado de Eventos CPIC'),
+                leading: Icon(Icons.image),
+                trailing: Icon(Icons.arrow_forward_ios),
+                onTap: (){
+                  myReactController.setTituloAppBar('Listado Eventos CPIC');
+                  myReactController.setPagina(4);   // Aqui se trae en main el array List menuPages = [
                   Get.back();
                 },
               ),

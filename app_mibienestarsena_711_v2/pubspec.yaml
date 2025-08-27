@@ -16,6 +16,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   get: any
   http: any
+  intl: ^0.18.1  # Dependecia para fucnionamiento de Fecha | Formatear fechas
 
 dev_dependencies:
   flutter_test:
