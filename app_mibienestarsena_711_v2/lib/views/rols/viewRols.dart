@@ -43,7 +43,7 @@ class _ViewRolsCPICState extends State<ViewRolsCPIC> {
                 leading: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.store), 
+                    Icon(Icons.security), 
                     Text(itemList['id'].toString()),
                   ],
                 ),

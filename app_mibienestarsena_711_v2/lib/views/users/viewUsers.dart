@@ -43,7 +43,7 @@ class _ViewUsersCPICState extends State<ViewUsersCPIC> {
                 leading: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.store), 
+                    Icon(Icons.people), 
                     Text(itemList['id'].toString()),
                   ],
                 ),

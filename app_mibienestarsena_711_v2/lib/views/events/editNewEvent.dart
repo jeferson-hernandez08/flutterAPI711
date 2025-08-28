@@ -14,7 +14,7 @@ final TextEditingController maxCapacityController = TextEditingController();
 final TextEditingController userIdController = TextEditingController();
 
 modalEditNewEvent(context, option, dynamic listItem) {
-  // Creamos una clave global para el formulario | Para campo clave
+  // Creamos una clave global para el formulario | Para campo clave y campos obligatorios
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   // Variables para los valores seleccionados en los dropdowns y fechas

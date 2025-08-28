@@ -85,7 +85,7 @@ class _InicioState extends State<Inicio> {
 
               ListTile(
                 title: Text('Listado del Roles CPIC'),
-                leading: Icon(Icons.image),
+                leading: Icon(Icons.security),
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: (){
                   myReactController.setTituloAppBar('Listado Roles CPIC');
@@ -97,7 +97,7 @@ class _InicioState extends State<Inicio> {
 
               ListTile(
                 title: Text('Listado del Usuarios CPIC'),
-                leading: Icon(Icons.image),
+                leading: Icon(Icons.people),
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: (){
                   myReactController.setTituloAppBar('Listado Usuarios CPIC');
@@ -109,7 +109,7 @@ class _InicioState extends State<Inicio> {
 
               ListTile(
                 title: Text('Listado de Categorias de Eventos CPIC'),
-                leading: Icon(Icons.image),
+                leading: Icon(Icons.category),
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: (){
                   myReactController.setTituloAppBar('Listado Categorias CPIC');
@@ -121,7 +121,7 @@ class _InicioState extends State<Inicio> {
 
               ListTile(
                 title: Text('Listado de Eventos CPIC'),
-                leading: Icon(Icons.image),
+                leading: Icon(Icons.event),
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: (){
                   myReactController.setTituloAppBar('Listado Eventos CPIC');
