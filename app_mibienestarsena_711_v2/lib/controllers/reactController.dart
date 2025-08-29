@@ -11,6 +11,9 @@ class ReactController extends GetxController  {
   final _listCategories = [].obs; 
   final _listEvents = [].obs; 
 
+  final _token = ''.obs;
+  final _user = {}.obs;
+
   void setPagina(int newPage){
     _pagina.value = newPage;
   }
@@ -38,14 +41,28 @@ class ReactController extends GetxController  {
   void setListEvents(List itemList){
     _listEvents.value = itemList;
   }
+
+  void setToken(String newToken) {
+    _token.value = newToken;
+  }
+    void setUser(Map newUser) {
+    _user.value = newUser;
+  }
  
   int get getPagina => _pagina.value;
   String get getTituloAppBar => _tituloAppBar.value;
+  
+
+
   List get getListPicsum => _listPicsum.value;
   List get getListPlaceHolder => _listPlaceHolder.value;
   List get getListAmbients => _listAmbients.value;     
   List get getListRols => _listRols.value;     
   List get getListUsers => _listUsers.value;     
   List get getListCategories => _listCategories.value;     
-  List get getListEvents => _listEvents.value;     
+  List get getListEvents => _listEvents.value;    
+ 
+ String get getToken => _token.value;
+ Map get getUser => _user.value;
+ 
 }

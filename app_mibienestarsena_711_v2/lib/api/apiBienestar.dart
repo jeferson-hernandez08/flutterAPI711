@@ -405,3 +405,59 @@ Future deleteEventApi(int id) async {
     throw Exception('Error al eliminar el evento con ID: $id');
   }
 }
+
+// Login 
+Future<bool> loginApi(String email, String password) async {
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+
+  dynamic data = {
+    'email': email,
+    'password': password,
+  };
+
+  dynamic url = Uri.parse('${baseUrl["mibienestarsena_api"]}/api/v1/auth/login');
+
+  print('🔐 Intentando login con:');
+  print('📧 Email: $email');
+  print('🔑 Password: $password');
+  print('🌐 URL: $url');
+
+  try {
+    final response = await http.post(
+      url,
+      headers: headers,
+      body: jsonEncode(data),
+    );
+
+    print('📥 Respuesta del servidor:');
+    print('📊 Status Code: ${response.statusCode}');
+    print('📦 Body: ${response.body}');
+
+    if (response.statusCode == 200) {
+      var responseData = jsonDecode(response.body);
+      
+      // Verificar la estructura de la respuesta
+      if (responseData['status'] == 'Ok' && responseData['data'] != null) {
+        print('✅ Login exitoso');
+        print('🔑 Token recibido: ${responseData['data']['token']}');
+        print('👤 Datos usuario: ${responseData['data']['user']}');
+
+        // 👇🏼 CORREGIR: Acceder a los datos dentro de 'data'
+        myReactController.setToken(responseData['data']['token']);
+        myReactController.setUser(responseData['data']['user']);
+        return true;
+      } else {
+        print('❌ Estructura de respuesta inesperada');
+        return false;
+      }
+    } else {
+      print('❌ Error en login - Status code: ${response.statusCode}');
+      return false;
+    }
+  } catch (e) {
+    print('💥 Excepción durante login: $e');
+    return false;
+  }
+}

@@ -1,6 +1,7 @@
 import 'package:app_mibienestarsena_711_v2/views/categories/viewCategories.dart';
 import 'package:app_mibienestarsena_711_v2/views/events/viewEvents.dart';
 import 'package:app_mibienestarsena_711_v2/views/interface/homePrincipal.dart';
+import 'package:app_mibienestarsena_711_v2/views/login/viewLogin.dart';
 import 'package:app_mibienestarsena_711_v2/views/rols/viewRols.dart';
 import 'package:app_mibienestarsena_711_v2/views/testviews/viewPlaceHolder.dart';
 import 'package:app_mibienestarsena_711_v2/views/users/viewUsers.dart';
@@ -27,6 +28,7 @@ List menuPages = [
   ViewRolsCPIC(),        // 1 View rols CPIC
   ViewUsersCPIC(),       // 2 View user CPIC
   ViewCategoriesCPIC(),  // 3 View categories CPIC
-  ViewEventsCPIC()       // 4 View events CPIC
+  ViewEventsCPIC(),      // 4 View events CPIC
+  //ViewLoginCPIC()        // 5 View login CPIC // Aqui nueva paginacion login
  
 ];

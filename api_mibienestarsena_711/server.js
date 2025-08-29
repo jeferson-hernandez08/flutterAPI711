@@ -72,6 +72,7 @@ app.use('/api/v1/categories', require('./api/v1/category.routes'));    // Ruta p
 app.use('/api/v1/events', require('./api/v1/event.routes'));    // Ruta para eventos
 app.use('/api/v1/rols', require('./api/v1/rol.routes'));    // Ruta para roles
 app.use('/api/v1/users', require('./api/v1/user.routes'));    // Ruta para usuarios
+app.use('/api/v1/auth', require('./api/v1/auth.routes'));     // Ruta para autenticación Login
 
 // Ruta para categories (Prueba)
 //app.use('/api/categories', require('./api/categories'));    // Ruta para categorias
@@ -81,4 +82,5 @@ app.listen(app.get('PORT'), ()=>{
     console.log(`🚀 Servidor corriendo en el PUERTO: ${app.get('PORT')}`)
     console.log(`🌐 URL de acceso: http://localhost:${app.get('PORT')}`)
     console.log(`🔧 CORS configurado para desarrollo`)
+    console.log(`🔐 Ruta de autenticación: http://localhost:${app.get('PORT')}/api/v1/auth/login`) 
 })

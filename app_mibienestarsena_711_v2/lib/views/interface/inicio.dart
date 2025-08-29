@@ -1,6 +1,7 @@
 import 'package:app_mibienestarsena_711_v2/api/apiBienestar.dart';
 import 'package:app_mibienestarsena_711_v2/views/categories/editNewCategory.dart';
 import 'package:app_mibienestarsena_711_v2/views/events/editNewEvent.dart';
+import 'package:app_mibienestarsena_711_v2/views/login/viewLogin.dart';
 import 'package:app_mibienestarsena_711_v2/views/rols/editNewRol.dart';
 import 'package:app_mibienestarsena_711_v2/views/users/editNewUser.dart';
 import 'package:flutter/material.dart';
@@ -19,12 +20,32 @@ class Inicio extends StatefulWidget {
 class _InicioState extends State<Inicio> {
   @override
   Widget build(BuildContext context) {
+    // Verificamos si el usuario está autenticado - DEBE ESTAR FUERA de Obx
+    if (myReactController.getToken.isEmpty) {
+      return ViewLoginCPIC();
+    }
     return Obx(
       () => Scaffold(
         appBar: AppBar(
           title: Center(child: Text(myReactController.getTituloAppBar)),
           backgroundColor: Colors.amber,
           foregroundColor: Colors.white,
+          actions: [
+            // Mostrar información del usuario logueado
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: Row(
+                children: [
+                  const Icon(Icons.person, size: 20),
+                  const SizedBox(width: 5),
+                  Text(
+                    myReactController.getUser['userName'] ?? 'Usuario',
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
         body: menuPages[myReactController.getPagina],
         floatingActionButton: Visibility(       // Aquí comentar para probar la otra opcion realizada de viewCreateAmbient.dart
@@ -49,6 +70,25 @@ class _InicioState extends State<Inicio> {
         drawer: Drawer(
           child: ListView(
             children: [
+              // Encabezado del drawer con información del usuario
+              UserAccountsDrawerHeader(
+                accountName: Text(
+                  myReactController.getUser['userName'] ?? 'Usuario',
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                accountEmail: Text(
+                  myReactController.getUser['email'] ?? 'email@ejemplo.com',
+                  style: const TextStyle(fontSize: 14),
+                ),
+                currentAccountPicture: const CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: Icon(Icons.person, color: Colors.amber),
+                ),
+                decoration: const BoxDecoration(
+                  color: Colors.amber,
+                ),
+              ),
+
               ListTile(
                 title: Text('Info Mi Bienestar SENA'),
                 leading: Icon(Icons.person),
@@ -130,7 +170,20 @@ class _InicioState extends State<Inicio> {
                 },
               ),
               Divider(),
-              
+
+              // Opción para cerrar sesión
+              ListTile(
+                title: const Text('Cerrar Sesión'),
+                leading: const Icon(Icons.logout),
+                onTap: () {
+                  // Limpiar token y datos de usuario
+                  myReactController.setToken('');
+                  myReactController.setUser({});
+                  // Redirigir al login
+                  Get.offAll(() => const Inicio());
+                },
+              ),
+
             ],
           ),
         ),
