@@ -1,6 +1,0 @@
-Tengo el siguiente archivo viewUsers.dart:
-
-
-
-Necesito que me hagas adsolutamente lo mismo pero con este archivo viewCategories.dart, cambiame todo que quede igual que 
-viewUsers.dart si no que con view users con las siguientes variables o atributos :
